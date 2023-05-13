@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sheikah Glyphs
-// @homepageURL  https://github.com/antfu/sheikah-glyphs
-// @supportURL   https://github.com/antfu/sheikah-glyphs
+// @homepageURL  https://github.com/ntnyq/sheikah-glyphs
+// @supportURL   https://github.com/ntnyq/sheikah-glyphs
 // @namespace    sheikah-glyphs
 // @version      0.0.4
 // @description  Replace all available chars to Sheikah Glyphs.
