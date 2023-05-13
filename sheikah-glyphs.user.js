@@ -17,7 +17,7 @@
 
   const doc = document
   const SELECTOR =
-    'body *:not(script):not(style):not(noscript):not(pre):not(pre *):not(code):not(code *):not(input):not(textarea):not([contenteditable="true"]):not(.sheikah-glyph):not(.sheikah-glyphs-rendered)'
+    'body *:not(script):not(style):not(noscript):not(pre):not(pre *):not(code):not(code *):not(input):not(textarea):not([contenteditable="true"]):not(.sheikah-glyph):not(.sheikah-glyphs-node)'
   // cSpell: disable-next-line
   const SHEIKAH_GLYPHS = '01234567890abcdefghigklmnopqrstuvwxyz-!.?'
   const SHEIKAH_SYMBOL_MAP = new Map([
@@ -31,11 +31,16 @@
   `
   const CSS = `
     .sheikah-glyph {
+      display: inline !important;
       width: 1em !important;
       height: 1em !important;
       vertical-align: -0.15em !important;
       fill: currentColor !important;
       overflow: hidden !important;
+    }
+
+    .sheikah-glyphs-node {
+      position: relative;
     }
   `
 
@@ -52,19 +57,17 @@
             const c = char.toLowerCase()
             if (!SHEIKAH_GLYPHS.includes(c)) return char
             const id = SHEIKAH_SYMBOL_MAP.has(c) ? SHEIKAH_SYMBOL_MAP.get(c) : c
-            return `
-              <svg class="sheikah-glyph" aria-hidden="true" title="${c}">
+            return `<svg class="sheikah-glyph" aria-hidden="true" title="${c}">
                 <use xlink:href="#sheikah-${id}" />
-              </svg>
-            `
+              </svg>`
           })
           .join('')
         if (originalText === newText) return
         const newTextNode = doc.createElement('span')
+        newTextNode.classList.add('sheikah-glyphs-node')
         newTextNode.innerHTML = newText
         node.replaceWith(newTextNode)
       })
-      element.classList.add('sheikah-glyphs-rendered')
     })
   }
 
