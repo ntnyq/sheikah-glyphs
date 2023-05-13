@@ -10,6 +10,7 @@
     "prepare": "husky install",
     "release": "bumpp -x \"node bump.js\" --all"
   },
+  "dependencies": {},
   "devDependencies": {
     "@ntnyq/eslint-config": "2.0.0-beta.10",
     "@ntnyq/prettier-config": "1.7.3",
@@ -19,6 +20,7 @@
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
     "prettier": "^2.8.8",
+    "svg-mixer": "^2.3.14",
     "typescript": "^5.0.4"
   },
   "prettier": "@ntnyq/prettier-config",
