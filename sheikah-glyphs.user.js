@@ -3,7 +3,7 @@
 // @homepageURL  https://github.com/ntnyq/sheikah-glyphs
 // @supportURL   https://github.com/ntnyq/sheikah-glyphs
 // @namespace    sheikah-glyphs
-// @version      0.0.4
+// @version      0.0.5
 // @description  Replace all available chars to Sheikah Glyphs.
 // @author       ntnyq
 // @license      MIT
