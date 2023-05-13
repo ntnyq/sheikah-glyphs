@@ -19,7 +19,7 @@
   const SELECTOR =
     'body *:not(script):not(style):not(noscript):not(pre):not(pre *):not(code):not(code *):not(input):not(textarea):not([contenteditable="true"]):not(.sheikah-glyph):not(.sheikah-glyphs-node)'
   // cSpell: disable-next-line
-  const SHEIKAH_GLYPHS = '01234567890abcdefghigklmnopqrstuvwxyz-!.?'
+  const SHEIKAH_GLYPHS = '01234567890abcdefghijgklmnopqrstuvwxyz-!.?'
   const SHEIKAH_SYMBOL_MAP = new Map([
     ['-', 'hyphen'],
     ['!', 'exclam'],
