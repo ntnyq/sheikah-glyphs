@@ -2,29 +2,28 @@
   "name": "sheikah-glyphs",
   "type": "module",
   "version": "0.0.6",
-  "packageManager": "pnpm@8.5.0",
+  "packageManager": "pnpm@9.11.0",
   "license": "MIT",
   "repository": "ntnyq/sheikah-glyphs",
   "scripts": {
-    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --max-warnings 0 .",
-    "prepare": "husky install",
+    "lint": "eslint .",
+    "prepare": "husky",
     "release": "bumpp -x \"node bump.js\" --all"
   },
   "dependencies": {},
   "devDependencies": {
-    "@ntnyq/eslint-config": "2.0.0-beta.10",
-    "@ntnyq/prettier-config": "1.7.3",
-    "bumpp": "^9.1.0",
-    "eslint": "^8.40.0",
-    "eslint-define-config": "^1.20.0",
-    "husky": "^8.0.3",
+    "@ntnyq/eslint-config": "^3.0.0-beta.15",
+    "@ntnyq/prettier-config": "^1.7.3",
+    "bumpp": "^9.5.2",
+    "eslint": "^9.11.0",
+    "husky": "^9.1.6",
     "nano-staged": "^0.8.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.3.3",
     "svg-mixer": "^2.3.14",
-    "typescript": "^5.0.4"
+    "typescript": "^5.6.2"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {
-    "*.{js,ts,yml,yaml,md,vue,json}": "pnpm run lint --fix"
+    "*.{js,ts,cjs,mjs,yml,yaml,md,vue,json}": "eslint --fix"
   }
 }

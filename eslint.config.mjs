@@ -1,4 +1,3 @@
-import { all } from '@ntnyq/eslint-config'
-import { defineFlatConfig } from 'eslint-define-config'
+import { ntnyq } from '@ntnyq/eslint-config'
 
-export default defineFlatConfig(all)
+export default ntnyq()
