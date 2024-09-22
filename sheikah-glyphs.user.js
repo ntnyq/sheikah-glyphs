@@ -9,11 +9,45 @@
 // @license      MIT
 // @match        http*://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=zelda.com
-// @grant        none
+// @grant       GM_getValue
+// @grant       GM_setValue
+// @grant       GM_registerMenuCommand
+// @grant       GM_unregisterMenuCommand
 // ==/UserScript==
 
 ;(function () {
   'use strict'
+
+  /**
+   * Create UI for the options
+   * @template T
+   * @param {string} key
+   * @param {string} title
+   * @param {T} defaultValue
+   * @returns {{ value: T }} return
+   */
+  function useOption(key, title, defaultValue) {
+    if (typeof GM_getValue === 'undefined') {
+      return {
+        value: defaultValue,
+      }
+    }
+    let value = GM_getValue(key, defaultValue)
+    const ref = {
+      get value() {
+        return value
+      },
+      set value(v) {
+        value = v
+        GM_setValue(key, v)
+        location.reload()
+      },
+    }
+    GM_registerMenuCommand(`${title}: ${value ? '✅' : '❌'}`, () => {
+      ref.value = !value
+    })
+    return ref
+  }
 
   const doc = document
   const SELECTOR =
@@ -46,8 +80,11 @@
       position: relative;
     }
   `
+  const ENABLE_REPLACE_GLYPHS = useOption('enbale_replace_glyphs', 'Enable Replace Glyphs', true)
 
   function replaceGlyphs() {
+    if (!ENABLE_REPLACE_GLYPHS.value) return
+
     const elements = doc.querySelectorAll(SELECTOR)
 
     elements.forEach(element => {
@@ -93,17 +130,17 @@
     }
   }
 
-  function injectStyle() {
-    const style = doc.createElement('style')
-    style.innerHTML = CSS
-    doc.head.append(style)
+  function injectStyle(css) {
+    const el = doc.createElement('style')
+    el.innerHTML = css
+    doc.head.append(el)
   }
-  function injectSprite() {
-    const sprite = document.createElement('div')
-    sprite.innerHTML = SVG_SPRITE
-    sprite.id = '__SHEIKAH_GLYPHS__'
-    sprite.style = 'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
-    doc.body.append(sprite)
+  function injectSprite(sprite) {
+    const el = document.createElement('div')
+    el.innerHTML = sprite
+    el.id = '__SHEIKAH_GLYPHS__'
+    el.style = 'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
+    doc.body.append(el)
   }
 
   const replaceGlyphsDebounced = debounce(replaceGlyphs, 300)
@@ -119,12 +156,12 @@
   if (doc.readyState === 'loading') {
     doc.addEventListener('DOMContentLoaded', () => {
       observeDOM(observer)
-      injectStyle()
-      injectSprite()
+      injectStyle(CSS)
+      injectSprite(SVG_SPRITE)
     })
   } else {
     observeDOM(observer)
-    injectStyle()
-    injectSprite()
+    injectStyle(CSS)
+    injectSprite(SVG_SPRITE)
   }
 })()
