@@ -80,7 +80,7 @@
       position: relative;
     }
   `
-  const ENABLE_REPLACE_GLYPHS = useOption('enbale_replace_glyphs', 'Enable Replace Glyphs', true)
+  const ENABLE_REPLACE_GLYPHS = useOption('enable_replace_glyphs', 'Enable Replace Glyphs', true)
 
   function replaceGlyphs() {
     if (!ENABLE_REPLACE_GLYPHS.value) return
