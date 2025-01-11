@@ -20,11 +20,10 @@
 
   /**
    * Create UI for the options
-   * @template T
-   * @param {string} key
-   * @param {string} title
-   * @param {T} defaultValue
-   * @returns {{ value: T }} return
+   * @param key - storage key
+   * @param title - storage title
+   * @param defaultValue - storage default -value
+   * @returns storage ref
    */
   function useOption(key, title, defaultValue) {
     if (typeof GM_getValue === 'undefined') {
@@ -78,9 +77,12 @@
 
     .sheikah-glyphs-node {
       position: relative;
+      user-select: none;
     }
   `
   const ENABLE_REPLACE_GLYPHS = useOption('enable_replace_glyphs', 'Enable Replace Glyphs', true)
+  // const REPLACE_INLINE_CODE = useOption('replace_inline_code', 'Replace Inline Code', true)
+  // const REPLACE_CODE_BLOCK = useOption('replace_code_block', 'Replace Code Block', true)
 
   function replaceGlyphs() {
     if (!ENABLE_REPLACE_GLYPHS.value) return
