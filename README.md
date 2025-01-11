@@ -4,7 +4,7 @@ Replace all available chars to Sheikah Glyphs.
 
 ## Screenshot
 
-![](./screenshots//example.png)
+![Sheikah Glyphs](./screenshots//example.png)
 
 ## Install
 

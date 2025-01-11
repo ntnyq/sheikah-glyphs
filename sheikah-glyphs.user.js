@@ -20,11 +20,10 @@
 
   /**
    * Create UI for the options
-   * @template T
-   * @param {string} key
-   * @param {string} title
-   * @param {T} defaultValue
-   * @returns {{ value: T }} return
+   * @param key - storage key
+   * @param title - storage title
+   * @param defaultValue - storage default -value
+   * @returns storage ref
    */
   function useOption(key, title, defaultValue) {
     if (typeof GM_getValue === 'undefined') {
@@ -78,31 +77,46 @@
 
     .sheikah-glyphs-node {
       position: relative;
+      user-select: none;
     }
   `
-  const ENABLE_REPLACE_GLYPHS = useOption('enable_replace_glyphs', 'Enable Replace Glyphs', true)
+  const ENABLE_REPLACE_GLYPHS = useOption(
+    'enable_replace_glyphs',
+    'Enable Replace Glyphs',
+    true,
+  )
+  // const REPLACE_INLINE_CODE = useOption('replace_inline_code', 'Replace Inline Code', true)
+  // const REPLACE_CODE_BLOCK = useOption('replace_code_block', 'Replace Code Block', true)
 
   function replaceGlyphs() {
-    if (!ENABLE_REPLACE_GLYPHS.value) return
+    if (!ENABLE_REPLACE_GLYPHS.value) {
+      return
+    }
 
     const elements = doc.querySelectorAll(SELECTOR)
 
     elements.forEach(element => {
       element.childNodes.forEach(node => {
-        if (node.nodeType !== Node.TEXT_NODE) return
+        if (node.nodeType !== Node.TEXT_NODE) {
+          return
+        }
         const originalText = node.textContent
         const newText = originalText
           .split('')
           .map(char => {
             const c = char.toLowerCase()
-            if (!SHEIKAH_GLYPHS.includes(c)) return char
+            if (!SHEIKAH_GLYPHS.includes(c)) {
+              return char
+            }
             const id = SHEIKAH_SYMBOL_MAP.has(c) ? SHEIKAH_SYMBOL_MAP.get(c) : c
             return `<svg class="sheikah-glyph" aria-hidden="true" title="${c}">
                 <use xlink:href="#sheikah-${id}" />
               </svg>`
           })
           .join('')
-        if (originalText === newText) return
+        if (originalText === newText) {
+          return
+        }
         const newTextNode = doc.createElement('span')
         newTextNode.classList.add('sheikah-glyphs-node')
         newTextNode.innerHTML = newText
@@ -121,12 +135,16 @@
       const context = this
       const later = function () {
         timeout = null
-        if (!immediate) func.apply(context, args)
+        if (!immediate) {
+          func.apply(context, args)
+        }
       }
       const callNow = immediate && !timeout
       clearTimeout(timeout)
       timeout = setTimeout(later, wait)
-      if (callNow) func.apply(context, args)
+      if (callNow) {
+        func.apply(context, args)
+      }
     }
   }
 
@@ -139,7 +157,8 @@
     const el = document.createElement('div')
     el.innerHTML = sprite
     el.id = '__SHEIKAH_GLYPHS__'
-    el.style = 'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
+    el.style =
+      'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
     doc.body.append(el)
   }
 
