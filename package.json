@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.8",
   "private": true,
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.3.0",
   "license": "MIT",
   "repository": "ntnyq/sheikah-glyphs",
   "scripts": {
@@ -14,11 +14,11 @@
   "devDependencies": {
     "@ntnyq/eslint-config": "^3.12.3",
     "@ntnyq/prettier-config": "^1.22.1",
-    "bumpp": "^10.0.2",
-    "eslint": "^9.20.0",
+    "bumpp": "^10.0.3",
+    "eslint": "^9.20.1",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.0",
     "svg-mixer": "^2.3.14",
     "typescript": "^5.7.3"
   },
