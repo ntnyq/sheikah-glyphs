@@ -80,7 +80,11 @@
       user-select: none;
     }
   `
-  const ENABLE_REPLACE_GLYPHS = useOption('enable_replace_glyphs', 'Enable Replace Glyphs', true)
+  const ENABLE_REPLACE_GLYPHS = useOption(
+    'enable_replace_glyphs',
+    'Enable Replace Glyphs',
+    true,
+  )
   // const REPLACE_INLINE_CODE = useOption('replace_inline_code', 'Replace Inline Code', true)
   // const REPLACE_CODE_BLOCK = useOption('replace_code_block', 'Replace Code Block', true)
 
@@ -141,7 +145,8 @@
     const el = document.createElement('div')
     el.innerHTML = sprite
     el.id = '__SHEIKAH_GLYPHS__'
-    el.style = 'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
+    el.style =
+      'width: 0; height: 0; position: absolute; top: -10000px; left: -10000px;'
     doc.body.append(el)
   }
 

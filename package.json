@@ -3,26 +3,26 @@
   "type": "module",
   "version": "0.0.8",
   "private": true,
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.6.1",
   "license": "MIT",
   "repository": "ntnyq/sheikah-glyphs",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint",
     "prepare": "husky",
     "release": "bumpp -x \"node bump.js\" --all"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^3.12.3",
+    "@ntnyq/eslint-config": "^4.0.0-beta.11",
     "@ntnyq/prettier-config": "^2.0.0",
     "bumpp": "^10.0.3",
     "eslint": "^9.21.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "svg-mixer": "^2.3.14",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "nano-staged": {
-    "*.{js,ts,cjs,mjs,yml,yaml,md,json,svg}": "eslint --fix"
+    "*.{js,ts,cjs,mjs,md,svg,yml,yaml,json}": "eslint --fix"
   }
 }

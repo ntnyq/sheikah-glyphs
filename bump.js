@@ -1,6 +1,11 @@
-import fs from 'node:fs/promises'
+// @ts-check
 
-const { version } = JSON.parse(await fs.readFile('package.json', 'utf8'))
-const content = await fs.readFile('sheikah-glyphs.user.js', 'utf8')
-const newContent = content.replace(/\/\/ @version\s+(?:\S.*)?$/m, `// @version      ${version}`)
-await fs.writeFile('sheikah-glyphs.user.js', newContent, 'utf8')
+import { readFile, writeFile } from 'node:fs/promises'
+import { version } from './package.json'
+
+const content = await readFile('sheikah-glyphs.user.js', 'utf8')
+const newContent = content.replace(
+  /\/\/ @version\s+(?:\S.*)?$/m,
+  `// @version      ${version}`,
+)
+await writeFile('sheikah-glyphs.user.js', newContent, 'utf8')
