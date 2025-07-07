@@ -12,7 +12,7 @@
     "release": "bumpp -x \"node bump.js\" --all"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^4.3.0",
+    "@ntnyq/eslint-config": "^5.0.0",
     "@ntnyq/prettier-config": "^3.0.1",
     "bumpp": "^10.2.0",
     "eslint": "^9.30.0",
