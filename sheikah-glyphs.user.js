@@ -20,10 +20,10 @@
 
   /**
    * Create UI for the options
-   * @param key - storage key
-   * @param title - storage title
-   * @param defaultValue - storage default -value
-   * @returns storage ref
+   * @param {string} key - storage key
+   * @param {string} title - storage title
+   * @param {unknown} defaultValue - storage default value
+   * @returns {object} storage ref
    */
   function useOption(key, title, defaultValue) {
     if (typeof GM_getValue === 'undefined') {
