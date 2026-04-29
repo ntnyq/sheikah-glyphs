@@ -20,7 +20,7 @@
     "nano-staged": "^0.9.0",
     "prettier": "^3.7.4",
     "svg-mixer": "^2.3.14",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "nano-staged": {
     "*.{js,ts,cjs,mjs,yml,yaml,md,json,svg}": "eslint --fix"
